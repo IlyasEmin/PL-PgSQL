@@ -1,23 +1,34 @@
-Create Table ogrenciler
+-- DATABASE(VeriTabanı) Oluşturma
+
+-- DDL - DATA DEFINITION LANG.
+-- CREATE - TABLO OLUŞTURMA
+CREATE TABLE ogrenciler2
 (
-	ogrenci_no char (7),
-	isim varchar (20),
-	soyisim varchar(25),
-	not_ort real, --double number
-	kayit_tarih date
+ogrenci_no char(7),
+isim varchar(20),
+soyisim varchar(25),
+not_ort real,-- Ondalıklı sayılar için kullanılır(Double gibi)
+kayit_tarih date    
 );
 
---var olan tablodan yeni tablo olusturmak
-create table ogrenci_notlari
-as select isim, soyisim, not_ort from ogrenciler
+--VAROLAN TABLODAN YENİ BİR TABLO OLUŞTURMA
+CREATE TABLE ogrenci_notlari2
+AS -- Benzer tablodaki başlıklarla ve data tipleriyle yeni bir tablo oluşturmak için 
+--normal tablo oluştururken ki parantezler yerine AS kullanıp Select komutuyla almak istediğimiz verileri alırız
+SELECT isim,soyisim,not_ort FROM ogrenciler2;
 
---DHL Data Manupilation Language
+-- DML - DATA MANUPULATION LANG.
+-- INSERT (Database'e veri ekleme)
 
-INSERT INTO ogrenciler VALUES (1234567,'Said', 'ILHAN', 85.5, now());
-INSERT INTO ogrenciler VALUES (1234567,'Said', 'ILHAN', 85.5, '2020-12-11');
+INSERT INTO ogrenciler2 VALUES ('1234567','Said','ILHAN',85.5,now());
+INSERT INTO ogrenciler2 VALUES ('1234567','Said','ILHAN',85.5,'2020-12-11');
 
-Insert Into ogrenciler(isim, soyisim) Values ('Ilyas', 'Okutan');
+-- BIR TABLOYA PARÇALI VERİ EKLEMEK İSTERSEK
 
---DQL
+INSERT INTO ogrenciler2 (isim,soyisim) VALUES ('Erol','Evren');
 
-select * from ogrenciler;
+
+-- DQL - DATA QUERY LANG.
+-- SELECT
+
+select * FROM ogrenciler2; -- Burdaki * sembolü herşeyi anlamındadır
